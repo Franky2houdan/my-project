@@ -1,0 +1,8 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+# config/routes.yaml
+easy_admin_bundle:
+    controller: EasyAdminBundle/Controller/AdminController
+    path: /administration

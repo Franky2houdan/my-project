@@ -1,0 +1,12 @@
+div.article{
+  width:1000px;
+  margin:0 auto;
+}
+div.pagination{
+text-align: center;
+}
+.centrage>li{
+  margin:10px;
+  list-style: none;
+
+}

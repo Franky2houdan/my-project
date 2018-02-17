@@ -1,0 +1,26 @@
+
+module my-systemd 1.0;
+
+require {
+	type init_var_run_t;
+	type systemd_gpt_generator_t;
+	type unconfined_service_t;
+	type init_exec_t;
+	type init_t;
+	class chr_file create;
+	class blk_file create;
+	class unix_stream_socket create;
+	class file read;
+}
+
+#============= init_t ==============
+
+#!!!! This avc is allowed in the current policy
+allow init_t init_var_run_t:blk_file create;
+
+#!!!! This avc is allowed in the current policy
+allow init_t init_var_run_t:chr_file create;
+allow init_t unconfined_service_t:unix_stream_socket create;
+
+#============= systemd_gpt_generator_t ==============
+allow systemd_gpt_generator_t init_exec_t:file read;

@@ -1,0 +1,18 @@
+easy_admin:
+    site_name: 'administration'
+    design:
+        brand_color: '#1ABC9C' #couleur barre horizontale
+        color_scheme: 'light' #couleur barre verticale
+        rtl: false #inverser les barres horizontale et verticale
+        menu: 
+            - { label: 'Sitecom', url: '/siteCom' }
+            - { label: 'Owa', url: '/owa' }
+            - Achat
+            - Article
+            - Client 
+            - Fournisseur 
+            - Stock 
+            - Vente
+
+         
+              
