@@ -56,6 +56,6 @@ class ConnexionController extends Controller
             }
         }
       }
-    return $this->render('siteCom/connexion.html.twig',array('form'=>$form->createView(),));
+    return $this->render('siteCom/connexion.html.twig',array('form'=>$form->createView()));
   }
 }

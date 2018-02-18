@@ -25,10 +25,9 @@ class InscriptionController extends Controller
           ->add('adresse', TextType::class)
           ->add('email', EmailType::class)
           ->add('mdp', TextType::class)
-          ->add('civilite', TextType::class)
           ->add('civilite', ChoiceType::class, array('choices'=>array(
             'Homme' => 'homme',
-            'Femme' => 'femme',
+            'Femme' => 'femme'
           )))
           ->add('save', SubmitType::class, array('label' => 'incription'))
           ->getForm();
