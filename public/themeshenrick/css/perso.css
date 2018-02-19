@@ -1,0 +1,24 @@
+div#form{
+    display:flex;
+}
+
+div#form >div{
+   margin-left:5px;
+}
+
+.btn, .btn-primary{
+    background: #3a3f44;
+}
+
+.btn:hover, .btn-primary:hover{
+    background: #eb4800; 
+    transition: background 0.3s;
+}
+
+
+@media only screen and (max-width: 500px) {
+
+    div#form{
+        flex-direction: column;
+    }
+}

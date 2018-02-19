@@ -10,19 +10,20 @@
 {% block stylesheets %}
         <!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
 		<!-- bootstrap -->
-		<link href="/my-project/public/bootstraphenrick/css/bootstrap.min.css" rel="stylesheet">
-		<link href="/my-project/public/bootstraphenrick/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="/bootstraphenrick/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/bootstraphenrick/css/bootstrap-responsive.min.css" rel="stylesheet">
 
-		<link href="/my-project/public/themeshenrick/css/bootstrappage.css" rel="stylesheet"/>
+		<link href="/themeshenrick/css/bootstrappage.css" rel="stylesheet"/>
 		<!-- global styles -->
-		<link href="/my-project/public/themeshenrick/css/flexslider.css" rel="stylesheet"/>
-		<link href="/my-project/public/themeshenrick/css/main.css" rel="stylesheet"/>
-		<link href="/my-project/public/themeshenrick/css/paginationCentrer.css" rel="stylesheet"/>
+		<link href="/themeshenrick/css/flexslider.css" rel="stylesheet"/>
+		<link href="/themeshenrick/css/main.css" rel="stylesheet"/>
+		<link href="/themeshenrick/css/paginationCentrer.css" rel="stylesheet"/>
+		<link href="/themeshenrick/css/perso.css" rel="stylesheet"/>
          <!-- scripts -->
-		<script src="my-project/public/themeshenrick/js/jquery-1.7.2.min.js"></script>
-		<script src="my-project/pubic/bootstraphenrick/js/bootstrap.min.js"></script>
-		<script src="my-project/public/themeshenrick/js/superfish.js"></script>
-		<script src="my-project/public/themeshenrick/js/jquery.scrolltotop.js"></script>
+		<script src="themeshenrick/js/jquery-1.7.2.min.js"></script>
+		<script src="bootstraphenrick/js/bootstrap.min.js"></script>
+		<script src="themeshenrick/js/superfish.js"></script>
+		<script src="themeshenrick/js/jquery.scrolltotop.js"></script>
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 			<script src="js/respond.min.js"></script>
@@ -38,9 +39,9 @@
 		<div id="top-bar" class="container">
 			<div class="row">
 				<div class="span4">
-					<form method="POST" class="search_form">
-						<input type="text" class="input-block-level search-query" Placeholder="Recherche">
-					</form>
+						{{ form_start(form, {'attr': {'class': 'search_form'} }) }}
+						{{ form_widget(form) }}
+						{{ form_end(form) }}
 				</div>
 				<div class="span8">
 					<div class="account pull-right">
@@ -57,7 +58,7 @@
 		<div id="wrapper" class="container">
 			<section class="navbar main-menu">
 				<div class="navbar-inner main-menu">
-					<a href="{{path('owa')}}" class="logo pull-left"><img src="/my-project/public/themeshenrick/images/logo.png" class="site_logo" alt=""></a>
+					<a href="{{path('owa')}}" class="logo pull-left"><img src="/themeshenrick/images/logo.png" class="site_logo" alt=""></a>
 					<nav id="menu" class="pull-right">
 						<ul>
 							<li><a href="./products.html">Woman</a>
@@ -108,7 +109,7 @@
 						</ul>
 					</div>
 					<div class="span5">
-						<p class="logo"><img src="/my-project/public/themeshenrick/images/logo.png" class="site_logo" alt=""></p>
+						<p class="logo"><img src="/themeshenrick/images/logo.png" class="site_logo" alt=""></p>
 						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
 						<br/>
 						<span class="social_icons">
@@ -126,8 +127,8 @@
 		</div>
 {% endblock %}
 {% block script %}
-		<script src="/my-project/public/themeshenrick/js/common.js"></script>
-		<script src="/my-project/public/themeshenrick/js/jquery.flexslider-min.js"></script>
+		<script src="themes/js/common.js"></script>
+		<script src="themes/js/jquery.flexslider-min.js"></script>
 		<script type="text/javascript">
 			$(function() {
 				$(document).ready(function() {
