@@ -24,6 +24,14 @@ class Article
      * @ORM\Column(type="string", length=70)
      */
     private $designation;
+     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $description;
+     /**
+     * @ORM\Column(type="string", length=30)
+     */
+    private $categorie;
 
     /**
      * @ORM\Column(type="decimal", scale=2)
@@ -36,7 +44,7 @@ class Article
     private $tva;
 
       /**
-     * @ORM\Column(type="string", length=70)
+     * @ORM\Column(type="string", length=140)
      */
     private $adresPhoto;
 
@@ -85,6 +93,25 @@ class Article
         $this->designation = $designation;
     }
 
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie($categorie)
+    {
+        $this->categorie = $categorie;
+    }
 
     public function getPrix()
     {
@@ -134,7 +161,6 @@ class Article
       {
           $this->fournisseur = $fournisseur;
       }
-
 
           public function __toString()
           {

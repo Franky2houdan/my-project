@@ -15,6 +15,8 @@ class ArticleRepository extends ServiceEntityRepository
 
     /**
         * @param $id
+        * @param $categorie
+        * @param $designation
         * @return Article[]
         */
     public function trouveUnArticle($id): array
@@ -22,10 +24,10 @@ class ArticleRepository extends ServiceEntityRepository
           $requete=$this->createQueryBuilder('a')
             ->where('a.id = :id')
             ->setParameter('id', $id)
+            ->orderBy('a.id', 'ASC')
             ->getQuery();
             return $requete->execute();
     }
-
 
     public function afficheListeArticle(): array
     {
@@ -40,5 +42,36 @@ class ArticleRepository extends ServiceEntityRepository
                 // $product = $qb->setMaxResults(1)->getOneOrNullResult();
     }
 
+    public function chercheUnArticle($designation,$categorie): array
+    {
+          $requete=$this->createQueryBuilder('a')
+            ->where('a.designation = :designation')
+            ->andWhere('a.categorie= :categorie')
+            ->setParameter('designation', $designation)
+            ->setParameter('categorie', $categorie)
+            ->orderBy('a.categorie', 'ASC')
+            ->getQuery();
+            return $requete->execute();
+    }
+
+    public function chercheUneCategorie($categorie): array
+    {
+          $requete=$this->createQueryBuilder('a')
+            ->where('a.categorie = :categorie')
+            ->setParameter('categorie', $categorie)
+            ->orderBy('a.categorie', 'ASC')
+            ->getQuery();
+            return $requete->execute();
+    }
+
+    public function chercheUneDesignation($designation): array
+    {
+          $requete=$this->createQueryBuilder('a')
+            ->where('a.designation = :designation')
+            ->setParameter('designation', $designation)
+            ->orderBy('a.designation', 'ASC')
+            ->getQuery();
+            return $requete->execute();
+    }
 
 }
