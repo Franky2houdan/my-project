@@ -20,7 +20,8 @@ text-align: center;
   div#form{
       flex-direction: column;
   }
-  div.thumbnail{
+  div.article{
     width:100%;
   }
+
 }
