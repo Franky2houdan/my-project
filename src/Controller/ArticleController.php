@@ -41,7 +41,6 @@ class ArticleController extends Controller
       ->chercheUneDesignation($designation);
     
    }else{
-    echo 'index';
     $article=new Article();
     $article = $this->getDoctrine()
     ->getRepository(Article::class)
