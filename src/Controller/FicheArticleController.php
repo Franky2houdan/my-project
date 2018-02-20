@@ -10,7 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 class FicheArticleController extends Controller
 {
   /**
@@ -30,7 +31,19 @@ class FicheArticleController extends Controller
       )))
       ->add('save', SubmitType::class, array('label' => 'Recherche','attr' => array('id' =>'submitButton','class' => 'btn btn-primary')))
       ->getForm();
-      return $this->render('siteCom/ficheArticle.html.twig', array('produit' =>$article,'suggestion'=>'bordel','form' =>$form->createView()));
+      foreach ($article as $key => $value) {
+      $prix = $value->getPrix();
+      $designation = $value->getDesignation();
+      }
+      $formPanier = $this->createFormBuilder($article)
+      ->setMethod('GET')
+      ->add('designation', HiddenType::class,array('label' => false,'data' => $designation))
+      ->add('prix',HiddenType::class, array('label' => false,'data' => $prix))
+      ->add('quantite',IntegerType::class, array('label' => false, 'attr'=>array('class'=>'span1','placeholder'=>true)))
+      ->add('save', SubmitType::class, array('label' => 'Ajouter au panier','attr' => array('class' => 'btn btn-large btn-primary pull-right')))
+      ->getForm();
+
+      return $this->render('siteCom/ficheArticle.html.twig', array('produit' =>$article,'suggestion'=>'bordel','form' =>$form->createView(),'formPanier'=>$formPanier->createView()));
     }
 
 }

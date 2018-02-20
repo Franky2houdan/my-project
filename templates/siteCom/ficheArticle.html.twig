@@ -38,10 +38,14 @@
       				<hr class="soft"/>
       				<form class="form-horizontal qtyFrm">
       				  <div class="control-group">
-      					<label class="control-label"><span>{{article.getPrix}}</span></label>
+      					<label class="control-label"><span>{{article.getPrix}} €</span></label>
       					<div class="controls">
-      					<input type="number" class="span1" placeholder="Qty."/>
-      					  <button type="submit" class="btn btn-large btn-primary pull-right"> Ajouter au panier <i class=" icon-shopping-cart"></i></button>
+
+                {{ form_start(formPanier, {'attr': {'class': 'form-horizontal qtyFrm'} }) }}
+                  {{ form_widget(formPanier) }}
+                  {{ form_end(formPanier) }}
+      					<input type="number" class="span1" placeholder="Quantité"/>
+      					  	Ajouter au panier  <i class=" icon-shopping-cart"></i>
       					</div>
       				  </div>
       				</form>
