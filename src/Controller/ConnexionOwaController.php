@@ -56,6 +56,6 @@ class ConnexionOwaController extends Controller
             }
         }
       }
-    return $this->render('owa/connexion.html.twig',array());
+    return $this->render('owa/connexion.html.twig',array('form'=>$form->createView()));
   }
 }
