@@ -51,11 +51,7 @@ class ArticleOwaController extends Controller
             $form = $this->createFormBuilder($article)
             ->setMethod('GET')
             ->add('designation', TextType::class,array('label' => false, 'attr' => array('class' => 'srchTxt','placeholder'=>'Recherche')))
-            ->add('categorie', ChoiceType::class, array('label' => false,'attr' => array('class' => 'srchTxt'),'choices'=>array(
-              'Tout' => '',
-              'Fruit' => 'fruit',
-              'Legume' => 'legume'
-            )))
+          
             ->add('save', SubmitType::class, array('label' => 'Recherche','attr' => array('class' => 'btn btn-primary')))
             ->getForm();
 
