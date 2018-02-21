@@ -25,7 +25,7 @@
       <p><a href="{{path('ficheArticleOwa',{'id':article.getId})}}"><img src="{{article.getAdresPhoto}}" alt="" /></a></p>
   		<p><a href="{{path('ficheArticleOwa',{'id':article.getId})}}" alt="" /></a></p>
   		<a href="{{path('ficheArticleOwa',{'id':article.getId})}}" class="title">{{article.getDesignation}}</a><br/>
-  		<a href="{{path('ficheArticleOwa',{'id':article.getId})}}" class="category">Quis nostrud</a>
+  		<a href="{{path('ficheArticleOwa',{'id':article.getId})}}" class="category">{{article.categorie}}</a>
   		<p class="price">{{article.getPrix}} €</p>
   	</div>
   </li>

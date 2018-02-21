@@ -5,7 +5,7 @@ easy_admin:
         color_scheme: 'light' #couleur barre verticale
         rtl: false #inverser les barres horizontale et verticale
         menu: 
-            - { label: 'Sitecom', url: '/my-project/public/siteCom' }
+            - { label: 'owa', url: '/my-project/public/owa' }
            
             - Achat
             - Article
