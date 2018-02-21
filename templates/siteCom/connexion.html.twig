@@ -8,12 +8,9 @@
         {% block h1 %}
           <h1> Connexion </h1>
         {% endblock %}
-        {{ form_start(form, {'attr': {'class': 'form-horizontal loginFrm'} }) }}
-       <div class="control-group">
+        {{ form_start(form) }}
         {{ form_widget(form) }}
-         </div>
         {{ form_end(form) }}
-       <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 
 
 {% endblock %}
