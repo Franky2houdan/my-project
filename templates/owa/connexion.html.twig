@@ -1,0 +1,16 @@
+{# templates/siteCom/index.html.twig #}
+{% extends 'baseOwa.html.twig' %}
+
+{% block title %}SiteCom{% endblock %}
+
+{% block body %}
+
+        {% block h1 %}
+          <h1> Connexion </h1>
+        {% endblock %}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+
+
+{% endblock %}
