@@ -14,21 +14,22 @@ class FicheArticleOwaController extends Controller
    * @Route("/owa/ficheArticle{id}", name="ficheArticleOwa")
     */
     public function index($id){
-		 $form = $this->createFormBuilder($article)
-            ->setMethod('GET')
-            ->add('designation', TextType::class,array('label' => false,'required' => false, 'attr' => array('class' => 'srchTxt','placeholder'=>'Recherche')))
-            ->add('categorie', ChoiceType::class, array('label' => false,'required' => false,'attr' => array('class' => 'srchTxt'),'choices'=>array(
-              'Tout' => '',
-              'Fruit' => 'fruit',
-              'Legume' => 'legume',
-            )))
-            ->add('save', SubmitType::class, array('label' => 'Recherche','attr' => array('id' =>'submitButton','class' => 'btn btn-primary')))
-            ->getForm();
-		
       $article=new Article();
       $article = $this->getDoctrine()
       ->getRepository(Article::class)
       ->trouveUnArticle($id);
+      
+		 $form = $this->createFormBuilder($article)
+      ->setMethod('GET')
+      ->add('designation', TextType::class,array('label' => false, 'attr' => array('id' =>'false','class' => 'srchTxt')))
+      ->add('categorie', ChoiceType::class, array('label' => false,'attr' => array('id' =>'false','class' => 'srchTxt'),'choices'=>array(
+        'Homme' => 'homme',
+        'Femme' => 'femme'
+      )))
+      ->add('save', SubmitType::class, array('label' => 'Recherche','attr' => array('id' =>'submitButton','class' => 'btn btn-primary')))
+      ->getForm();
+		
+     
       return $this->render('owa/ficheArticle.html.twig', array('produit' =>$article,'suggestion'=>'bordel','form' =>$form->createView()));
     }
 
