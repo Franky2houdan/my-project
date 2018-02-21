@@ -48,17 +48,17 @@ class ArticleOwaController extends Controller
             ->afficheListeArticle();    
            };
           
+            $form = $this->createFormBuilder($article)
+            ->setMethod('GET')
+            ->add('categorie', ChoiceType::class, array('label' => false,'attr' => array('class' => 'srchTxt'),'choices'=>array(
+                'Tout' => '',
+                'Fruit' => 'fruit',
+                'Legume' => 'legume'
+              )))
+            ->add('designation', TextType::class,array('label' => false, 'attr' => array('class' => 'srchTxt','placeholder'=>'Recherche')))
             
-    $form = $this->createFormBuilder($article)
-    ->setMethod('GET')
-    
-    ->add('categorie', ChoiceType::class, array('label' => false,'required' => false,'attr' => array('class' => 'srchTxt'),'choices'=>array(
-      'Tout' => '',
-      'Homme' => 'homme',
-      'Femme' => 'femme'
-    )))
-    ->add('save', SubmitType::class, array('label' => 'Recherche','attr' => array('id' =>'submitButton','class' => 'btn btn-primary')))
-    ->getForm();
+            ->add('save', SubmitType::class, array('label' => 'Recherche','attr' => array('class' => 'btn btn-primary')))
+            ->getForm();
 
       $paginator  = $this->get('knp_paginator');
       $pagination = $paginator->paginate(
