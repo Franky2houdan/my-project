@@ -52,8 +52,9 @@ class ArticleController extends Controller
     ->add('designation', TextType::class,array('label' => false,'required' => false, 'attr' => array('class' => 'srchTxt')))
     ->add('categorie', ChoiceType::class, array('label' => false,'required' => false,'attr' => array('class' => 'srchTxt'),'choices'=>array(
       'Tout' => '',
-      'Homme' => 'homme',
-      'Femme' => 'femme'
+      'Vin blanc' => 'vin blanc',
+      'Vin rosé' => 'vin rosé',
+      'Vin rouge' => 'vin rouge'
     )))
     ->add('save', SubmitType::class, array('label' => 'Recherche','attr' => array('id' =>'submitButton','class' => 'btn btn-primary')))
     ->getForm();
