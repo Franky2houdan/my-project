@@ -44,7 +44,7 @@ class Article
     private $tva;
 
       /**
-     * @ORM\Column(type="string", length=140)
+     * @ORM\Column(type="string", length=255)
      */
     private $adresPhoto;
 
