@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
  class PanierController extends Controller{
     /**
-    * @Route("/panier", name="siteCom")
+    * @Route("/siteCom/panier", name="panier")
    */
         public function panier(){
         /* Démarrage ou prolongation de la session */
