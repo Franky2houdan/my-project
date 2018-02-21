@@ -62,7 +62,7 @@ class ArticleController extends Controller
     $pagination = $paginator->paginate(
            $article, /* query NOT result */
            $request->query->getInt('page', 1)/*page number*/,
-           $request->query->getInt('limit', 8)/*limit per page*/
+           $request->query->getInt('limit', 6)/*limit per page*/
        );
        //parameters to template
        return $this->render('siteCom/index.html.twig', array('pagination' => $pagination,'form' =>$form->createView()));
