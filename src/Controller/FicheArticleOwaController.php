@@ -44,4 +44,4 @@ class FicheArticleOwaController extends Controller
 
     }
 
-}
+
