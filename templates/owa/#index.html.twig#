@@ -1,0 +1,77 @@
+{# templates/siteCom/index.html.twig #}
+{% extends 'baseOwa.html.twig' %}
+{% block title %}{{parent()}}{% endblock %}
+{% block stylesheets %}{{parent()}}{% endblock %}
+{% block body %}
+{% block header %}{{parent()}}{% endblock %}
+  {% block article %}
+  <section class="header_text sub">
+  <img class="pageBanner" src="/my-project/public/themeshenrick/images/legume/pageBanner.png" alt="New products" >
+    <h4><span>Detail du produit</span></h4>
+  </section>
+  			<section class="main-content">
+  				<div class="row">
+  					<div class="span12">
+  						<div class="row">
+  							<div class="span12">
+  								<div id="myCarousel" class="myCarousel carousel slide">
+  									<div class="carousel-inner">
+  										<div class="active item">
+  											<ul class="thumbnails">
+  												{% for article in pagination %}
+  <li class="span3">
+  	<div class="product-box">
+    <span class="sale_tag"></span>
+      <p><a href="{{path('ficheArticleOwa',{'id':article.getId})}}"><img src="{{article.getAdresPhoto}}" alt="" /></a></p>
+  		<p><a href="{{path('ficheArticleOwa',{'id':article.getId})}}" alt="" /></a></p>
+  		<a href="{{path('ficheArticleOwa',{'id':article.getId})}}" class="title">{{article.getDesignation}}</a><br/>
+  		<a href="{{path('ficheArticleOwa',{'id':article.getId})}}" class="category">{{article.categorie}}</a>
+  		<p class="price">{{article.getPrix}} €</p>
+  	</div>
+  </li>
+  {% endfor %}
+
+  {# display navigation #}
+  											</ul>
+  										</div>
+
+  										{{ knp_pagination_render(pagination) }}
+  										</div>
+  						<div class="row feature_box">
+  							<div class="span4">
+  								<div class="service">
+  									<div class="responsive">
+  										<img src="/my-project/public/themeshenrick/images/feature_img_2.png" alt="" />
+  										<h4>MODERN <strong>DESIGN</strong></h4>
+  										<p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
+  									</div>
+  								</div>
+  							</div>
+  							<div class="span4">
+  								<div class="service">
+
+  									<div class="customize">
+  										<img src="/my-project/public/themeshenrick/images/feature_img_1.png" alt="" />
+  										<h4>FREE <strong>SHIPPING</strong></h4>
+  										<p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
+  									</div>
+  								</div>
+  							</div>
+  							<div class="span4">
+  								<div class="service">
+  									<div class="support">
+  										<img src="/my-project/public/themeshenrick/images/feature_img_3.png" alt="" />
+  										<h4>24/7 LIVE <strong>SUPPORT</strong></h4>
+  										<p>Lorem Ipsum is simply dummy text of the printing and printing industry unknown printer.</p>
+  									</div>
+  								</div>
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+
+  			</section>
+  {% endblock %}
+  {% block footer %}{{parent()}}{% endblock %}
+  {% block script %}{{parent()}}{% endblock %}
+{% endblock %}
