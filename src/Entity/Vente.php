@@ -75,5 +75,22 @@ class Vente
              {
                  $this->client = $client;
              }
+             
+              /**
+            * @ORM\ManyToOne(targetEntity="App\Entity\Article", inversedBy="vente")
+            * @ORM\JoinColumn(nullable=true)
+            */
+           private $article;
+
+           public function getArticle()
+           {
+               return $this->article;
+           }
+
+           public function setArticle($article)
+           {
+               $this->article = $article;
+           }
+
 
 }
