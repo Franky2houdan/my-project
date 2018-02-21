@@ -29,7 +29,7 @@ class ConnexionController extends Controller
       $form = $this->createFormBuilder($client)
       ->add('inputEmail', TextType::class,array('label',false,'attr'=>array('placeholder'=>'Email')))
       ->add('inputPassword', TextType::class,array('label',false,'attr'=>array('placeholder'=>'Email')))
-      ->add('save', SubmitType::class, array('label' => 'Se Connecter','attr'=>array('class','btn btn-success'))
+      ->add('save', SubmitType::class, array('label' => 'Se Connecter','attr'=>array('class','btn btn-success')))
       ->getForm();
       $form->handleRequest($request);
       /*comparer la saisie avec la base*/
