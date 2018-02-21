@@ -15,7 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class ConnexionOwaController extends Controller
 {
     /**
-   * @Route("/owa/connexion", name="connexion")
+   * @Route("/owa/connexion", name="connexionOwa")
    */
     public function connect(Request $request)
     {

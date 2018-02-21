@@ -15,8 +15,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class ConnexionController extends Controller
 {
     /**
-	* @Route("/siteCom/frank", name="connexion")
-	*/
+    * @Route("/siteCom/connexion", name="connexion")
+    */
     public function connect(Request $request)
     {
       // create a client and give it some dummy data for this example
