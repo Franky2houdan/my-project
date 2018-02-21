@@ -1,0 +1,47 @@
+{# templates/siteCom/index.html.twig #}
+{% extends 'base.html.twig' %}
+  {% block stylesheets %}
+    {{parent()}}
+  {% endblock %}
+  {% block body %}
+      {% block header %}
+      {{parent()}}
+      {% endblock %}
+      {% block carousel %}
+      {{parent()}}
+      {% endblock %}
+
+                  {% block article %}
+                          <!-- ARTICLE DEBUT====================================================================== -->
+                                  <div class="article">
+                              <h4>Détail Articles</h4>
+                                  <ul class="centrage">
+                                    {% for article in pagination %}
+
+                                      <li class="span3">
+                                      <div class="thumbnail">
+                                          <a  href="{{path('ficheArticle',{'id':article.getId})}}"><img src="{{article.getAdresPhoto}}" alt=""/></a>
+                                          <div class="caption">
+                                          <h5>{{article.getDesignation}}</h5>
+                                          <p>
+                                             {{article.categorie}}
+                                          </p>
+
+                                          <h4 style="text-align:center"><a class="btn" href="/themesfrank/product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="/themesfrank/#">Panier <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="/themesfrank/#">{{article.getPrix}}</a></h4>
+                                          </div>
+                                      </div>
+                                      </li>
+                                      {% endfor %}
+                                  </ul>
+                              </div>
+                              </div>
+                          </div>
+                            {{ knp_pagination_render(pagination) }}
+                      </div>
+                          <!-- ARTICLE FIN====================================================================== -->
+                  {% endblock %}
+
+      {% block footer %}
+        {{parent()}}
+      {% endblock %}
+  {% endblock %}
