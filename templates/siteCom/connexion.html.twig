@@ -1,9 +1,17 @@
 {# templates/siteCom/index.html.twig #}
 {% extends 'base.html.twig' %}
+  {% block stylesheets %}
+    {{parent()}}
+  {% endblock %}
+  {% block body %}
+      {% block header %}
+      {{parent()}}
+      {% endblock %}
+      {% block carousel %}
+      {{parent()}}
+    {% endblock %}
 
-{% block title %}SiteCom{% endblock %}
-
-{% block body %}
+    {% block article %}
 
         {% block h1 %}
           <h1> Connexion </h1>
@@ -15,5 +23,12 @@
         {{ form_end(form) }}
        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 
+    {% endblock %}
 
+
+    {% endblock %}
+
+    {% block footer %}
+    {{parent()}}
+    {% endblock %}
 {% endblock %}
