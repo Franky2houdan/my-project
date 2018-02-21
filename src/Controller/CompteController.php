@@ -10,7 +10,7 @@ use App\Entity\Article;
 use App\Entity\Fournisseur;
 use App\Entity\Achat;
 
-class AchatController extends Controller
+class CompteController extends Controller
 {
     /**
      * @Route("/siteCom/compte", name="compte")
