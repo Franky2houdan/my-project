@@ -3,32 +3,33 @@
   {% block stylesheets %}
     {{parent()}}
   {% endblock %}
+
   {% block body %}
       {% block header %}
       {{parent()}}
       {% endblock %}
+
       {% block carousel %}
       {{parent()}}
-    {% endblock %}
+      {% endblock %}
 
-    {% block article %}
+        {% block article %}
 
-        {% block h1 %}
-          <h1> Connexion </h1>
-        {% endblock %}
-        {{ form_start(form, {'attr': {'class': 'form-horizontal loginFrm'} }) }}
-       <div class="control-group">
-        {{ form_widget(form) }}
-         </div>
-        {{ form_end(form) }}
-       <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+          {% block h1 %}
+            <h1> Connexion </h1>
+          {% endblock %}
 
-    {% endblock %}
+            {{ form_start(form, {'attr': {'class': 'form-horizontal loginFrm'} }) }}
+           <div class="control-group">
+            {{ form_widget(form) }}
+             </div>
+            {{ form_end(form) }}
+           <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 
+  {% endblock %}
 
-    {% endblock %}
+  {% block footer %}
+  {{parent()}}
+  {% endblock %}
 
-    {% block footer %}
-    {{parent()}}
-    {% endblock %}
 {% endblock %}
