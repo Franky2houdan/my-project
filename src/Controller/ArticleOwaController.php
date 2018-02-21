@@ -49,6 +49,17 @@ class ArticleOwaController extends Controller
            };
           
             
+    $form = $this->createFormBuilder($article)
+    ->setMethod('GET')
+    ->add('designation', TextType::class,array('label' => false,'required' => false, 'attr' => array('class' => 'srchTxt')))
+    ->add('categorie', ChoiceType::class, array('label' => false,'required' => false,'attr' => array('class' => 'srchTxt'),'choices'=>array(
+      'Tout' => '',
+      'Homme' => 'homme',
+      'Femme' => 'femme'
+    )))
+    ->add('save', SubmitType::class, array('label' => 'Recherche','attr' => array('id' =>'submitButton','class' => 'btn btn-primary')))
+    ->getForm();
+
       $paginator  = $this->get('knp_paginator');
       $pagination = $paginator->paginate(
              $article, /* query NOT result */
