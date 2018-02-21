@@ -16,12 +16,12 @@
           <h4 class="title"><span class="text"><strong>Login</strong> Form</span></h4>
           <form action="#" method="post">
 
-            {% block h1 %}
-            {% endblock %}
+           
+  
             {{ form_start(form, {'attr': {'class': 'form-horizontal loginFrm'} }) }}
             {{ form_widget(form) }}
             {{ form_end(form) }}
-           {% endblock %}
+     
 
             <input type="hidden" name="next" value="/">
             <fieldset>
@@ -53,3 +53,7 @@
     {% block footer %}
     {{parent()}}
     {% endblock %}
+    {% block javascripts %}
+    {% endblock %}
+    {% endblock %}
+    
