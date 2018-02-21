@@ -26,8 +26,10 @@ class FicheArticleController extends Controller
       ->setMethod('GET')
       ->add('designation', TextType::class,array('label' => false, 'attr' => array('id' =>'false','class' => 'srchTxt')))
       ->add('categorie', ChoiceType::class, array('label' => false,'attr' => array('id' =>'false','class' => 'srchTxt'),'choices'=>array(
-        'Homme' => 'homme',
-        'Femme' => 'femme'
+      'Tout' => '',
+      'Vin blanc' => 'vin blanc',
+      'Vin rosé' => 'vin rosé',
+      'Vin rouge' => 'vin rouge'
       )))
       ->add('save', SubmitType::class, array('label' => 'Recherche','attr' => array('id' =>'submitButton','class' => 'btn btn-primary')))
       ->getForm();
