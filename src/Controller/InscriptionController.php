@@ -62,7 +62,7 @@ class InscriptionController extends Controller
                  $em->flush();
 
             }
-            return $this->render('siteCom/inscription.html.twig',array('formInscrimtion'=>$formInscription->createView(),'form'=>$form->createView()));
+            return $this->render('siteCom/inscription.html.twig',array('formInscription'=>$formInscription->createView(),'form'=>$form->createView()));
  }
 
 }
