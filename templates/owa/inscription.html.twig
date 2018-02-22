@@ -1,5 +1,5 @@
 {# templates/siteCom/index.html.twig #}
-{% extends 'baseOwa.html.twig' %}
+{% extends 'base.html.twig' %}
   {% block stylesheets %}
     {{parent()}}
   {% endblock %}
@@ -12,15 +12,13 @@
       {% endblock %}
 
                   {% block article %}
-
-        {% block h1 %}
-          <h1> Connexion </h1>
-        {% endblock %}
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {{ form_end(form) }}
-
-        <!-- ARTICLE FIN====================================================================== -->
+       
+          <h1> Inscription </h1>
+        
+        {{ form_start(formInscription, {'attr': {'class': 'inscription'} }) }}
+        {{ form_widget(formInscription) }}
+        {{ form_end(formInscription) }}
+                <!-- ARTICLE FIN====================================================================== -->
                   {% endblock %}
 
       {% block footer %}
