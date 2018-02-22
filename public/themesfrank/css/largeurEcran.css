@@ -13,7 +13,9 @@ text-align: center;
 #form{
   display: flex;
 }
-
+form.connxeion,form.inscription{
+  flex-direction: column;
+}
 
 @media only screen and (max-width: 500px) {
 
