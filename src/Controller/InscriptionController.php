@@ -36,11 +36,11 @@ class InscriptionController extends Controller
    global $client,$clientForm;
    $client = new Client();
    $formInscription = $this->createFormBuilder($client)
-          ->add('nom', TextType::class)
-          ->add('adresse', TextType::class)
-          ->add('email', EmailType::class)
-          ->add('mdp', TextType::class)
-          ->add('civilite', ChoiceType::class, array('choices'=>array(
+          ->add('nom', TextType::class,array('label'=>false,'attr'=>array('placeholder'=>'nom')))
+          ->add('adresse', TextType::class,array('label'=>false,'attr'=>array('placeholder'=>'adresse'))
+          ->add('email', EmailType::class,array('label'=>false,'attr'=>array('placeholder'=>'email'))
+          ->add('mdp', TextType::class,array('label'=>false,'attr'=>array('placeholder'=>'mdp'))
+          ->add('civilite', ChoiceType::class,array('label'=>false,'choices'=>array(
             'Homme' => 'homme',
             'Femme' => 'femme'
           )))
