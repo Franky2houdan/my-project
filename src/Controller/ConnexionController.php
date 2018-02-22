@@ -26,14 +26,24 @@ class ConnexionController extends Controller
       ->getRepository(Client::class)
       ->afficheListeClient();
       //récup tous les clients
-      $form = $this->createFormBuilder($client)
+      $formConnexion = $this->createFormBuilder($client)
       ->add('Email', TextType::class,array('label'=> false,'attr'=>array('placeholder'=>'Email')))
       ->add('mdp', TextType::class,array('label'=> false,'attr'=>array('placeholder'=>'Email')))
       ->add('save', SubmitType::class, array('label' => 'Se Connecter','attr'=>array('class'=>'btn btn-success')))
       ->getForm();
       $form->handleRequest($request);
       /*comparer la saisie avec la base*/
-
+      $form = $this->createFormBuilder($article)
+    ->setMethod('GET')
+    ->add('designation', TextType::class,array('label' => false,'required' => false, 'attr' => array('class' => 'srchTxt')))
+    ->add('categorie', ChoiceType::class, array('label' => false,'required' => false,'attr' => array('class' => 'srchTxt'),'choices'=>array(
+      'Tout' => '',
+      'Vin blanc' => 'vin blanc',
+      'Vin rosé' => 'vin rosé',
+      'Vin rouge' => 'vin rouge'
+    )))
+    ->add('save', SubmitType::class, array('label' => 'Recherche','attr' => array('id' =>'submitButton','class' => 'btn btn-primary')))
+    ->getForm();
       if ($form->isSubmitted() && $form->isValid()) {
         $clientForm = $form->getData();
 
@@ -56,6 +66,6 @@ class ConnexionController extends Controller
             }
         }
       }
-    return $this->render('siteCom/connexion.html.twig',array('form'=>$form->createView()));
+    return $this->render('siteCom/connexion.html.twig',array('formConnexion'=>$formConnexion->createView(),'form'=>$formConnexion->createView()));
   }
 }
