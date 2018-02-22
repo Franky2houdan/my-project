@@ -13,7 +13,8 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-class InscriptionController extends Controller
+
+class InscriptionOwaController extends Controller
 {
   /**
    * @Route("/owa/inscription", name="inscriptionOwa")
