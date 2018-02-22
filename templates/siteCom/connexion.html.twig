@@ -1,8 +1,4 @@
-{# templates/siteCom/index.html.twig #}
-{% extends 'base.html.twig' %}
-
-{% block title %}SiteCom{% endblock %}
-{# templates/siteCom/index.html.twig #}
+{{# templates/siteCom/index.html.twig #}
 {% extends 'base.html.twig' %}
   {% block stylesheets %}
         {{parent()}}
@@ -11,6 +7,7 @@
       {% block header %}
         {{parent()}}
       {% endblock %}
+      {% block detailArticle %}
       {% block detailArticle %}
 
         {% block h1 %}
