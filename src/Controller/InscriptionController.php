@@ -44,7 +44,7 @@ class InscriptionController extends Controller
             'Homme' => 'homme',
             'Femme' => 'femme'
           )))
-          ->add('save', SubmitType::class, array('label' => 'incription'))
+          ->add('save', SubmitType::class, array('label' => 'incription','attr'=>array('class'=>'btn btn-success')))
           ->getForm();
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
