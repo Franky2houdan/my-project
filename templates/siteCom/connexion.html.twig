@@ -7,18 +7,11 @@
       {% block header %}
         {{parent()}}
       {% endblock %}
-      {% block detailArticle %}
-
-{% block body %}
-
-        {% block h1 %}
-          <h1> Connexion </h1>
-        {% endblock %}
+      {% block detailArticle %}     
+          <h1> Connexion </h1>  
         {{ form_start(form) }}
         {{ form_widget(form) }}
         {{ form_end(form) }}
-
-
 {% endblock %}
 
       {% block footer %}
