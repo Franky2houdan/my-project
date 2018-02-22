@@ -10,8 +10,8 @@
       {% block carousel %}
       {{parent()}}
       {% endblock %}
-        
-      {% block Article %}
+
+                  {% block article %}
 
         {% block h1 %}
           <h1> Connexion </h1>
@@ -20,9 +20,10 @@
         {{ form_widget(form) }}
         {{ form_end(form) }}
 
- {% endblock %}
+             <!-- ARTICLE FIN====================================================================== -->
+                  {% endblock %}
 
       {% block footer %}
         {{parent()}}
-        {% endblock %}
+      {% endblock %}
   {% endblock %}
