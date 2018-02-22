@@ -1,13 +1,19 @@
-{{# templates/siteCom/index.html.twig #}
+{# templates/siteCom/index.html.twig #}
 {% extends 'base.html.twig' %}
   {% block stylesheets %}
-        {{parent()}}
+    {{parent()}}
   {% endblock %}
   {% block body %}
       {% block header %}
+      {{parent()}}
+      {% endblock %}
+      {% block carousel %}
+      {{parent()}}
+      {% endblock %}
+      {% block header %}
         {{parent()}}
       {% endblock %}
-      {% block detailArticle %}
+    
       {% block detailArticle %}
 
         {% block h1 %}
