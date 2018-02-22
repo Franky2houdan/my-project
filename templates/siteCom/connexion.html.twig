@@ -1,7 +1,13 @@
 {# templates/siteCom/index.html.twig #}
 {% extends 'base.html.twig' %}
-
-{% block title %}SiteCom{% endblock %}
+  {% block stylesheets %}
+        {{parent()}}
+  {% endblock %}
+  {% block body %}
+      {% block header %}
+        {{parent()}}
+      {% endblock %}
+      {% block detailArticle %}
 
 {% block body %}
 
@@ -14,3 +20,8 @@
 
 
 {% endblock %}
+
+      {% block footer %}
+        {{parent()}}
+        {% endblock %}
+  {% endblock %}

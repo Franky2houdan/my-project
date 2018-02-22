@@ -49,7 +49,7 @@ class ConnexionController extends Controller
                 $session->set('mdp',$value->getMdp());
                 $session->set('civilite',$value->getCivilite());
                 $session->set('id',$value->getId());
-                return $this->redirectToRoute('index');
+                return $this->redirectToRoute('siteCom');
               }else{
                 return $this->redirectToRoute('easy_admin_bundle');
               }
