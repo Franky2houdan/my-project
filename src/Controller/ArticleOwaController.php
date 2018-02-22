@@ -14,7 +14,7 @@ class ArticleOwaController extends Controller
 {
 
     /**
-     * @Route("/owa", name="henrick")
+     * @Route("/owa", name="owa")
      */
     public function afficheArticleOwa(request $request){
         if(!empty($_GET['form']['designation']) && !empty($_GET['form']['categorie'])){
