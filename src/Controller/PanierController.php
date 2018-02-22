@@ -1,52 +1,103 @@
 <?php
-// src/Controller/LuckyController.php
+
 namespace App\Controller;
 
-use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
- class PanierController extends Controller{
-    /**
-    * @Route("/siteCom/panier", name="panier")
+use App\Entity\Article;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+//include_once('fonction-panier.php');
+class PanierController extends Controller
+{
+  /**
+   * @Route("/siteCom/panier", name="panier")
    */
-        public function panier(){
-        /* Démarrage ou prolongation de la session */
-        session_start();
-       
-        /* Article exemple */
-        $select = array();
-        $select['id'] = "phlevis501";
-        $select['qte'] = 2;
-        $select['taille'] = "56";
-        $select['prix'] = 84.95;
+  public function panier(){
+    if (isset($_SESSION['panier']))
+    {
+      print_r($_SESSION);
+       //Nous allons passer par un panier temporaire
+       $tmp=array();
+       $tmp['libelleProduit'] = array();
+       $tmp['qteProduit'] = array();
+       $tmp['prixProduit'] = array();
+      if(isset($_SESSION['panier']['desigantion'])){
+       for($i = 0; $i < count($_SESSION['panier']['designation']); $i++)
+       {
+          if ($_SESSION['panier']['desigantion'][$i] !== $libelleProduit)
+          {
+             array_push( $tmp['libelleProduit'],$_SESSION['panier']['deisgnation'][$i]);
+             array_push( $tmp['qteProduit'],$_SESSION['panier']['qte'][$i]);
+             array_push( $tmp['prixProduit'],$_SESSION['panier']['prix'][$i]);
+          }
+       }
+        //On remplace le panier en session par notre panier temporaire à jour
+        $_SESSION['panier'] =  $tmp;
+        //On efface notre panier temporaire
+        unset($tmp);
+          //Si la quantité est positive on modifie sinon on supprime l'article
+          if (isset($qteProduit)&&$qteProduit > 0)
+          {
+             //Recharche du produit dans le panier
+             $positionProduit = array_search($libelleProduit,  $_SESSION['panier']['libelleProduit']);
+    
+             if ($positionProduit !== false)
+             {
+                $_SESSION['panier']['qteProduit'][$positionProduit] = $qteProduit ;
+             }
+          }
+          else
+          supprimerArticle($libelleProduit);
+       }
 
-        /* On vérifie l'existence du panier, sinon, on le crée */
-        if(!isset($_SESSION['panier']))
+       function MontantGlobal(){
+        $total=0;
+        for($i = 0; $i < count($_SESSION['panier']['libelleProduit']); $i++)
         {
-            /* Initialisation du panier */
-            $_SESSION['panier'] = array();
-            /* Subdivision du panier */
-            $_SESSION['panier']['id_article'] = array();
-            $_SESSION['panier']['qte'] = array();
-            $_SESSION['panier']['taille'] = array();
-            $_SESSION['panier']['prix'] = array();
+           $total += $_SESSION['panier']['qteProduit'][$i] * $_SESSION['panier']['prixProduit'][$i];
         }
+        return $total;
+     }
 
-        /* Ici, on sait que le panier existe, donc on ajoute l'article dedans. */
-       // array_push($_SESSION['panier']['id_article'],$select['id']);
-        array_push($_SESSION['panier']['qte'],$select['qte']);
-        array_push($_SESSION['panier']['taille'],$select['taille']);
-        array_push($_SESSION['panier']['prix'],$select['prix']);
+     $total=0;
+     for($i = 0; $i < count($_SESSION['panier']['designation']); $i++)
+     {
+        $total += $_SESSION['panier']['qte'][$i] * $_SESSION['panier']['prix'][$i];
+     }
+     
+      }
+      
+    
 
-        /* Affichons maintenant le contenu du panier : */
-        
-       echo '<pre>';
-        
-        var_dump($_SESSION['panier']);
-        
-        echo '</pre>';
 
-            return new response('<html><body>Lucky number: '.'henrick'.'</body></html>');     
-        }
-}
+    
+    $article=new Article();
+    $article = $this->getDoctrine()
+    ->getRepository(Article::class)
+    ->afficheListeArticle();
+    $form = $this->createFormBuilder($article)
+    ->setMethod('GET')
+    ->add('designation', TextType::class,array('label' => false, 'attr' => array('id' =>'false','class' => 'srchTxt')))
+    ->add('categorie', ChoiceType::class, array('label' => false,'attr' => array('id' =>'false','class' => 'srchTxt'),'choices'=>array(
+      'Homme' => 'homme',
+      'Femme' => 'femme'
+    )))
+    ->add('save', SubmitType::class, array('label' => 'Recherche','attr' => array('id' =>'submitButton','class' => 'btn btn-primary')))
+    ->getForm();
+
+###############################################################################################################
+
+ 
+
+ 
+     
+      //print_r($session);
+      //  $session->invalidate();
+      return $this->render('siteCom/panier.html.twig',array('form'=>$form->createView(),'session'=>$_SESSION));
+  }
+
+  }
