@@ -1,5 +1,9 @@
 {# templates/siteCom/index.html.twig #}
 {% extends 'base.html.twig' %}
+
+{% block title %}SiteCom{% endblock %}
+{# templates/siteCom/index.html.twig #}
+{% extends 'base.html.twig' %}
   {% block stylesheets %}
         {{parent()}}
   {% endblock %}
@@ -7,12 +11,16 @@
       {% block header %}
         {{parent()}}
       {% endblock %}
-      {% block detailArticle %}     
-          <h1> Connexion </h1>  
+      {% block detailArticle %}
+
+        {% block h1 %}
+          <h1> Connexion </h1>
+        {% endblock %}
         {{ form_start(form) }}
         {{ form_widget(form) }}
         {{ form_end(form) }}
-{% endblock %}
+
+ {% endblock %}
 
       {% block footer %}
         {{parent()}}
