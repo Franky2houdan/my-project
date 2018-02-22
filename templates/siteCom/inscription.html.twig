@@ -1,15 +1,27 @@
 {# templates/siteCom/index.html.twig #}
 {% extends 'base.html.twig' %}
+  {% block stylesheets %}
+    {{parent()}}
+  {% endblock %}
+  {% block body %}
+      {% block header %}
+      {{parent()}}
+      {% endblock %}
+      {% block carousel %}
+      {{parent()}}
+      {% endblock %}
 
-{% block title %}SiteCom{% endblock %}
-
-{% block body %}
-
-        {% block h1 %}
+                  {% block article %}
+       
           <h1> Inscription </h1>
-        {% endblock %}
+        
         {{ form_start(form) }}
         {{ form_widget(form) }}
         {{ form_end(form) }}
-      
-{% endblock %}
+                <!-- ARTICLE FIN====================================================================== -->
+                  {% endblock %}
+
+      {% block footer %}
+        {{parent()}}
+      {% endblock %}
+  {% endblock %}

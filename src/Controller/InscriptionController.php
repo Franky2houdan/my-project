@@ -1,6 +1,6 @@
 <?php
 namespace App\Controller;
-
+use App\Entity\Article;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,9 +18,24 @@ class InscriptionController extends Controller
    */
  public function inscrire(Request $request)
  {
+  $article=new Article();
+  $article = $this->getDoctrine()
+  ->getRepository(Article::class)
+  ->afficheListeArticle();  
+  $form = $this->createFormBuilder($article)
+  ->setMethod('GET')
+  ->add('designation', TextType::class,array('label' => false,'required' => false, 'attr' => array('class' => 'srchTxt')))
+  ->add('categorie', ChoiceType::class, array('label' => false,'required' => false,'attr' => array('class' => 'srchTxt'),'choices'=>array(
+    'Tout' => '',
+    'Vin blanc' => 'vin blanc',
+    'Vin rosé' => 'vin rosé',
+    'Vin rouge' => 'vin rouge'
+  )))
+  ->add('save', SubmitType::class, array('label' => 'Recherche','attr' => array('id' =>'submitButton','class' => 'btn btn-primary')))
+  ->getForm();
    global $client,$clientForm;
    $client = new Client();
-   $form = $this->createFormBuilder($client)
+   $formInscription = $this->createFormBuilder($client)
           ->add('nom', TextType::class)
           ->add('adresse', TextType::class)
           ->add('email', EmailType::class)
@@ -47,7 +62,7 @@ class InscriptionController extends Controller
                  $em->flush();
 
             }
-            return $this->render('siteCom/inscription.html.twig',array('form'=>$form->createView(),));
+            return $this->render('siteCom/inscription.html.twig',array('formInscrimtion'=>$formInscription->createView(),'form'=>$form->createView()));
  }
 
 }
