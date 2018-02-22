@@ -19,6 +19,10 @@ class ConnexionController extends Controller
     */
     public function connect(Request $request)
     {
+      $article=new Article();
+      $article = $this->getDoctrine()
+      ->getRepository(Article::class)
+      ->afficheListeArticle();  
       // create a client and give it some dummy data for this example
       $client = new Client();
       $clientSelect = new Client();
