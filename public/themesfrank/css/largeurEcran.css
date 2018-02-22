@@ -13,7 +13,7 @@ text-align: center;
 #form{
   display: flex;
 }
-form.connxeion,form.inscription{
+form.connxeion > div.form ,form.inscription > div.form{
   flex-direction: column;
 }
 
