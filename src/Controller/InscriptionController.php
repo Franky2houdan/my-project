@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class InscriptionController extends Controller
@@ -37,9 +39,9 @@ class InscriptionController extends Controller
    $client = new Client();
    $formInscription = $this->createFormBuilder($client)
           ->add('nom', TextType::class,array('label'=>false,'attr'=>array('placeholder'=>'nom')))
-          ->add('adresse', TextType::class,array('label'=>false,'attr'=>array('placeholder'=>'adresse'))
-          ->add('email', EmailType::class,array('label'=>false,'attr'=>array('placeholder'=>'email'))
-          ->add('mdp', TextType::class,array('label'=>false,'attr'=>array('placeholder'=>'mdp'))
+          ->add('adresse', TextType::class,array('label'=>false,'attr'=>array('placeholder'=>'adresse')))
+          ->add('email', EmailType::class,array('label'=>false,'attr'=>array('placeholder'=>'email')))
+          ->add('mdp', PasswordType::class,array('label'=>false,'attr'=>array('placeholder'=>'mdp')))
           ->add('civilite', ChoiceType::class,array('label'=>false,'choices'=>array(
             'Homme' => 'homme',
             'Femme' => 'femme'

@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 
 class ConnexionOwaController extends Controller
@@ -28,7 +29,7 @@ class ConnexionOwaController extends Controller
       //récup tous les clients
       $form = $this->createFormBuilder($client)
       ->add('Email', TextType::class,array('label'=> false,'attr'=>array('placeholder'=>'Email')))
-      ->add('mdp', TextType::class,array('label'=> false,'attr'=>array('placeholder'=>'Email')))
+      ->add('mdp', PasswordType::class,array('label'=> false,'attr'=>array('placeholder'=>'Email')))
       ->add('save', SubmitType::class, array('label' => 'Se Connecter','attr'=>array('class'=>'btn btn-success')))
       ->getForm();
       $form->handleRequest($request);
