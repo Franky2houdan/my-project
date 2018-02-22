@@ -7,4 +7,22 @@
   {% block stylesheets %}
         {{parent()}}
   {% endblock %}
-  
+  {% block body %}
+      {% block header %}
+        {{parent()}}
+      {% endblock %}
+      {% block detailArticle %}
+
+        {% block h1 %}
+          <h1> Connexion </h1>
+        {% endblock %}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+
+ {% endblock %}
+
+      {% block footer %}
+        {{parent()}}
+        {% endblock %}
+  {% endblock %}
